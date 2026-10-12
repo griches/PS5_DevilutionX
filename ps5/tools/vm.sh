@@ -4,6 +4,7 @@
 #   ps5/tools/vm.sh build                ps5/tools/build.sh (the game, into dist/<TITLE_ID>/)
 #   ps5/tools/vm.sh deploy               ps5/tools/deploy.sh (FTP to the console)
 #   ps5/tools/vm.sh run                  ps5/tools/run.sh (launch and follow klog)
+#   ps5/tools/vm.sh package-release V    ps5/tools/package-release.sh (the release archive)
 #
 # The stack (PS5_Vulkan with its RADV archive, PS5_Mesa, PS5_PayloadSDK) lives in
 # the Lima VM "ps5" under ~/ps5, built with LLVM 22 (~/ps5/env.sh); this folder is
@@ -14,6 +15,6 @@
 # SPDX-License-Identifier: MIT
 set -euo pipefail
 root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../.." && pwd)
-tool=${1:?usage: vm.sh build|deploy|run [arguments]}
+tool=${1:?usage: vm.sh build|deploy|run|package-release [arguments]}
 shift
 exec limactl shell ps5 -- bash -lc '. ~/ps5/env.sh; export PS5_VULKAN_DIR=~/ps5/PS5_Vulkan PS5_PAYLOAD_SDK_FORK=~/ps5/PS5_PayloadSDK PS5_BUILD_DIR=${PS5_BUILD_DIR:-$HOME/ps5/build/PS5_DevilutionX/game}; cd "$1"; tool=$2; shift 2; exec bash "ps5/tools/$tool.sh" "$@"' _ "$root" "$tool" "$@"

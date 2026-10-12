@@ -24,16 +24,23 @@ project, under that project's licence.
 | The Vulkan driver | RADV from [PS5_Mesa](https://github.com/mihawk-99/PS5_Mesa), linked by [PS5_Vulkan](https://github.com/mihawk-99/PS5_Vulkan) | MIT (Mesa); GPL-3.0 (PS5_Vulkan's link recipe, CRT and tools) |
 | The platform layer and SDK | [PS5_PayloadSDK](https://github.com/mihawk-99/PS5_PayloadSDK), a fork of ps5-payload-dev/sdk | GPL-3.0 |
 
-## A built title: not for distribution as it stands
+## A built title
 
-A built `eboot.bin` links DevilutionX (Sustainable Use License, which forbids
-commercial use) with the GPL-3.0 platform layer and CRT. The GPL does not allow
-that added restriction on a combined work, and the Sustainable Use License does
-not allow its code to be relicensed under the GPL, so **a build from this
-repository is for your own console and should not be passed on** until that is
-settled: by permission from the authors of one side or the other, or by a build
-that does not link the GPL-3.0 parts (DevilutionX's own PS5 packaging,
-`Packaging/ps5` upstream, builds against the stock payload SDK instead).
+A built `eboot.bin` links DevilutionX (Sustainable Use License: non-commercial
+use, passed on free of charge only) with the GPL-3.0 platform layer and CRT of
+the PS5 stack. The two licences set conditions that do not fit together on one
+program: the GPL allows no restriction beyond its own on a combined work, and
+the Sustainable Use License does not let its code be relicensed under the GPL.
+
+Releases of this port are made anyway, by Gary Riches' decision (2026-10-12),
+on these terms: free of charge, for non-commercial use, with the licence texts
+and the source of every part at the revisions built (`SOURCE.txt` in each
+release). That meets what each licence asks of a distributor except the point
+above, which only the authors of one side or the other can settle: by a
+linking permission from the authors of the GPL-3.0 parts, by permission from
+the DevilutionX maintainers, or by a build that does not link the GPL-3.0
+parts (DevilutionX's own PS5 packaging, `Packaging/ps5` upstream, builds
+against the stock payload SDK). If either asks, the builds come down.
 
 ## What is not covered
 

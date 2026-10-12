@@ -15,10 +15,10 @@ This is an unofficial build. DevilutionX has a PS5 port of its own
 is not supported by the DevilutionX project: please do not take its problems
 to them.
 
-**Source only: no built title is published here.** A built `eboot.bin` links
+**Free of charge, for non-commercial use.** A built `eboot.bin` links
 DevilutionX (Sustainable Use License) with GPL-3.0 parts of the PS5 stack, and
-the two licences do not allow that combination to be passed on:
-[`LICENSING.md`](LICENSING.md).
+the two licences' conditions do not fit together on one program:
+[`LICENSING.md`](LICENSING.md) says where that stands.
 
 ## Status
 
@@ -100,9 +100,10 @@ button on the pad and it shows the pad's symbol.
 
 ## Install
 
-1. Build it (below), which fills `dist/PPSA99308/`.
-2. Copy that folder to `/data/homebrew/PPSA99308/` on the console
-   (`ps5/tools/vm.sh deploy` does it over FTP).
+1. Unpack a [release](https://github.com/griches/PS5_DevilutionX/releases)'s zip,
+   or build it (below), which fills `dist/PPSA99308/`.
+2. Copy the `PPSA99308` folder to `/data/homebrew/PPSA99308/` on the console
+   (`ps5/tools/vm.sh deploy` does it over FTP from a build).
 3. Put your `DIABDAT.MPQ` beside `eboot.bin`, in `/data/homebrew/PPSA99308/`.
    `hellfire.mpq`, `hfmonk.mpq`, `hfmusic.mpq` and `hfvoice.mpq` go there too
    if you have Hellfire.
