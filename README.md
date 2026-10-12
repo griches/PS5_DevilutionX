@@ -26,7 +26,8 @@ Tested on one console (firmware 13.60, a 3840x2160 output) on 2026-10-12, with
 the retail `DIABDAT.MPQ`, at DevilutionX `b0a3b7ba`. "Seen" means it ran there
 and was looked at through [PS5 DevLoop](https://github.com/griches/PS5_DevLoop)
 (a virtual controller and the title's own frames) or read in the console's
-log; nothing else is claimed.
+log; nothing else is claimed. Sound, the keyboard and the mouse were tried by
+hand on the same console.
 
 | Area | Seen on the console | Not yet verified |
 | --- | --- | --- |
@@ -34,10 +35,10 @@ log; nothing else is claimed.
 | Picture | Fills the screen at 960x540 (the default) and at 1280x720; Settings lists 1080p, 720p, 540p and 480p | 1080p and 480p in play; a 1080p television |
 | Controller | Menus (Cross confirms, Circle goes back), walking with the left stick, the inventory, picking an item up, the game menu, the modifier hint overlays | Each button in play; rumble |
 | Button prompts | The DualSense's symbols: "△ to use" on a potion, and the bindings in Settings > Padmapping | Every prompt in the game |
-| Keyboard and mouse | Both libraries load and open at start-up | **Everything else: no keyboard or mouse was plugged in.** The code is the Quake III port's, which was played with both |
+| Keyboard and mouse | Both libraries load and open at start-up. Played with a keyboard and a mouse by Gary Riches on the console (2026-10-12) | Each key and button; text entry; the prompts changing to the keyboard's wording |
 | Saving | Save Game from the menu; the hero and the save found again after a restart | |
 | Settings | Resolution changed and changed back; kept in `userdata/diablo.ini` | Every other option |
-| Sound | | Nobody has listened yet |
+| Sound | Listened to by Gary Riches on the console (2026-10-12) | Music, speech and effects each checked against the PC game |
 | Exit | Exit Diablo and Quit Game both close the title (exit status 0) | Closing it from the home screen |
 | Multiplayer | | Not built: `NONET` is on |
 
