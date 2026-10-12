@@ -15,7 +15,7 @@ This is an unofficial build. DevilutionX has a PS5 port of its own
 is not supported by the DevilutionX project: please do not take its problems
 to them.
 
-**Private, and not for release as it stands.** A built `eboot.bin` links
+**Source only: no built title is published here.** A built `eboot.bin` links
 DevilutionX (Sustainable Use License) with GPL-3.0 parts of the PS5 stack, and
 the two licences do not allow that combination to be passed on:
 [`LICENSING.md`](LICENSING.md).
