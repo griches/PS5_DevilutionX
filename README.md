@@ -56,23 +56,41 @@ Known limits:
 
 ## Controls
 
-**Controller**, as DevilutionX has a PlayStation pad by default:
+**Controller.** These are DevilutionX's defaults for a PlayStation pad, read
+from its source (`InitPadmapActions` in `Source/diablo.cpp`).
 
-| | |
+In menus: D-pad or left stick to move, **Cross** to confirm, **Circle** to go
+back, **Square** to delete a hero.
+
+In the game:
+
+| Button | Does |
 | --- | --- |
-| Left stick, D-pad | Move |
-| Right stick, R3 | Move the pointer, click |
-| Circle | Attack, talk, pick up or place in the inventory |
-| Triangle | Pick up, open, use an inventory item |
+| Left stick, D-pad | Walk |
+| Right stick | Move the pointer |
+| Circle | Main action: attack, talk, and lift or place an item in the inventory |
+| Triangle | Second action: pick up from the ground, open chests and doors, use an item in the inventory |
 | Square | Cast the active spell |
-| Cross | Choose a spell; in menus, confirm |
-| L1, R1 | Use a health or a mana potion from the belt |
-| L2, R2 | Character sheet, inventory |
+| Cross | Open the quick spell list to choose the active spell; close a panel |
+| L1 / R1 | Drink a health / a mana potion from the belt |
+| L2 / R2 | Character sheet / inventory |
 | L3 | Automap |
-| Hold Options | Shows a second set: D-pad for character, inventory, map; face buttons for quests and the spell book |
-| Options + touchpad button | The game menu |
+| R3 | Left mouse click at the pointer |
 
-Settings > Padmapping changes any of them.
+Two buttons change what the others do while held, and the game draws the
+choices on screen while you hold them:
+
+| Hold | Then | Does |
+| --- | --- | --- |
+| Options | D-pad, face buttons | Opens a panel: the icons shown are character, inventory, map, quests, spell book |
+| Touchpad button | Face buttons | Sets or casts a spell hotkey (the four empty squares) |
+| Touchpad button | L2 / R2 | Quest log / spell book |
+| Touchpad button | D-pad | Moves the pointer |
+| Touchpad button | L1 or R3 | Left click (L1) / right click (R3); R1 is right click too |
+| Options | Touchpad button | **The game menu** (save, options, quit) |
+
+Settings > Padmapping lists every action with its button and changes any of
+them.
 
 **Keyboard and mouse** are the PC game's: left click to move and attack, right
 click to cast, `I` inventory, `C` character, `Tab` the map, `Esc` the menu,
