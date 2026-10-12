@@ -1,5 +1,9 @@
 # DevilutionX for PlayStation 5
 
+[![stars](https://img.shields.io/github/stars/griches/PS5_DevilutionX?style=flat)](https://github.com/griches/PS5_DevilutionX/stargazers)
+[![release](https://img.shields.io/github/v/release/griches/PS5_DevilutionX)](https://github.com/griches/PS5_DevilutionX/releases/latest)
+[![licence](https://img.shields.io/badge/licence-see%20LICENSING.md-orange)](LICENSING.md)
+
 A PS5 homebrew build of [DevilutionX](https://github.com/diasurgical/devilutionX),
 the source port of Diablo and Hellfire, as an installed title (`PPSA99308`) with
 a controller, a keyboard and a mouse. The game draws its picture in software, as
