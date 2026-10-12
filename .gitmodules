@@ -1,0 +1,3 @@
+[submodule "vendor/devilutionx"]
+	path = vendor/devilutionx
+	url = https://github.com/diasurgical/devilutionX.git

@@ -1,0 +1,101 @@
+diff --git a/Source/engine/dx.cpp b/Source/engine/dx.cpp
+index 54b2d0061..62fc9704c 100644
+--- a/Source/engine/dx.cpp
++++ b/Source/engine/dx.cpp
+@@ -32,6 +32,15 @@
+ #include "utils/sdl_wrap.h"
+ #include "utils/static_vector.hpp"
+ 
++#ifdef __PROSPERO__
++#include <cstdio>
++#include <unistd.h>
++
++#include <SDL3/SDL_iostream.h>
++
++#include "utils/surface_to_png.hpp"
++#endif
++
+ #ifndef USE_SDL1
+ #include "controls/touch/renderers.h"
+ #endif
+@@ -284,11 +293,43 @@ void UpdateOutputSurface()
+ } // namespace
+ #endif
+ 
++#ifdef __PROSPERO__
++/**
++ * PS5 DevLoop's grab: when its request file can be removed, the frame being
++ * presented is written as a new PNG in a folder that holds nothing else.
++ */
++void Ps5GrabRequest()
++{
++	static unsigned calls;
++	static unsigned grabs;
++	if (++calls % 4 != 0 || unlink("/app0/devloop-shot") != 0)
++		return;
++	const char *partial = "/app0/userdata/grab.partial";
++	SDL_IOStream *stream = SDL_IOFromFile(partial, "wb");
++	if (stream == nullptr) {
++		LogError("PS5 grab: {}: {}", partial, SDL_GetError());
++		return;
++	}
++	const auto written = WriteSurfaceToFilePng(GlobalBackBuffer(), stream);
++	if (!written.has_value()) {
++		LogError("PS5 grab: no picture written: {}", written.error());
++		return;
++	}
++	char name[64];
++	std::snprintf(name, sizeof(name), "/app0/userdata/screenshots/grab-%04u.png", grabs++);
++	std::rename(partial, name);
++}
++#endif
++
+ void RenderPresent()
+ {
+ 	if (HeadlessMode)
+ 		return;
+ 
++#ifdef __PROSPERO__
++	Ps5GrabRequest();
++#endif
++
+ 	SDL_Surface *surface = GetOutputSurface();
+ 
+ 	if (!gbActive) {
+diff --git a/Source/options.cpp b/Source/options.cpp
+index d7ed9b4a8..db1c52e7c 100644
+--- a/Source/options.cpp
++++ b/Source/options.cpp
+@@ -206,7 +206,8 @@ Options &GetOptions()
+ #if SDL_VERSION_ATLEAST(2, 0, 0)
+ bool HardwareCursorSupported()
+ {
+-#if (defined(TARGET_OS_IPHONE) && TARGET_OS_IPHONE == 1) || __DJGPP__
++#if (defined(TARGET_OS_IPHONE) && TARGET_OS_IPHONE == 1) || __DJGPP__ || defined(__PROSPERO__)
++	// PlayStation 5: the console draws no pointer for a title
+ 	return false;
+ #elif USE_SDL3
+ 	return true;
+diff --git a/Source/utils/paths.cpp b/Source/utils/paths.cpp
+index 5dc9e84d9..571606c04 100644
+--- a/Source/utils/paths.cpp
++++ b/Source/utils/paths.cpp
+@@ -106,6 +106,9 @@ const std::string &PrefPath()
+ 	if (!prefPath) {
+ #if defined(__DJGPP__)
+ 		prefPath = std::string();
++#elif defined(__PROSPERO__)
++		// PlayStation 5: a title may write inside its own folder only
++		prefPath = "/app0/userdata/";
+ #elif defined(__IPHONEOS__)
+ 		prefPath = FromSDL(IOSGetPrefPath());
+ #elif defined(NXDK)
+@@ -127,6 +130,8 @@ const std::string &ConfigPath()
+ 	if (!configPath) {
+ #if defined(__DJGPP__)
+ 		configPath = std::string();
++#elif defined(__PROSPERO__)
++		configPath = "/app0/userdata/";
+ #elif defined(__IPHONEOS__)
+ 		configPath = FromSDL(IOSGetPrefPath());
+ #elif defined(NXDK)

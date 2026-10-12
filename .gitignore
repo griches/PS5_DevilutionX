@@ -1,0 +1,12 @@
+.DS_Store
+build/
+dist/
+klog/
+.deps/
+*.log
+# never: the game's data and saves
+*.mpq
+*.MPQ
+*.sv
+*.hsv
+userdata/
